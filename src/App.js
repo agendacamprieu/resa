@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { EasybaseProvider } from "easybase-react";
+import ebconfig from "./ebconfig";
+import ListReservations from "./components/ListReservations";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ display: "flex", justifyContent: "center" }}>
+      <EasybaseProvider ebconfig={ebconfig}>
+        <ListReservations />
+      </EasybaseProvider>
     </div>
   );
 }
