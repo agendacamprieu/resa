@@ -5,7 +5,7 @@ import ThemeContext from "../../context/ThemeContext";
 // import logo from "./../../img/logo3.png";
 
 const Menu = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { period, setPeriod } = useContext(ThemeContext);
 
   return (
     <div id="menu-navbar">
@@ -26,10 +26,10 @@ const Menu = () => {
           id="switch-theme"
           offLabel="Année"
           onChange={() => {
-            setTheme(theme === "month" ? "year" : "month");
+            setPeriod(period === "month" ? "year" : "month");
           }}
           onLabel="Mois"
-          checked={theme === "month"}
+          checked={period === "month"}
         />
         <Link to={"/"}>Calendrier</Link>
         <Link to={"/reservations"}>Réservations</Link>
