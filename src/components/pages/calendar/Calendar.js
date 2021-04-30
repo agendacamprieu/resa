@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../../context/ThemeContext";
 
 const Calendar = () => {
-  return <h1>Calendar</h1>;
+  const { theme } = useContext(ThemeContext);
+  return (
+    <>
+      <h1>{theme}</h1>
+    </>
+  );
 };
 
 export default Calendar;

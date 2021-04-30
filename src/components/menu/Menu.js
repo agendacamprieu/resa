@@ -1,25 +1,40 @@
-import React from "react";
-import { Icon, Navbar } from "react-materialize";
+import React, { useContext } from "react";
+import { Icon, Navbar, Switch } from "react-materialize";
 import { Link } from "react-router-dom";
+import ThemeContext from "../../context/ThemeContext";
 // import logo from "./../../img/logo3.png";
 
 const Menu = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   return (
-    <Navbar
-      alignLinks="right"
-      brand={
-        <div className="brand-logo">
-          <Icon>house</Icon>
-          {/*<img src={logo} alt="logo"></img>*/}
-        </div>
-      }
-      id="mobile-nav"
-      menuIcon={<Icon>menu</Icon>}
-      style={{ backgroundColor: "#26a69a" }}
-    >
-      <Link to={"/"}>Calendrier</Link>
-      <Link to={"/reservations"}>Réservations</Link>
-    </Navbar>
+    <div id="menu-navbar">
+      <Navbar
+        alignLinks="right"
+        brand={
+          <div className="brand-logo">
+            <Icon>house</Icon>
+            <span>Réservations pour Camprieu</span>
+            {/*<img src={logo} alt="logo"></img>*/}
+          </div>
+        }
+        id="mobile-nav"
+        menuIcon={<Icon>menu</Icon>}
+        style={{ backgroundColor: "#26a69a" }}
+      >
+        <Switch
+          id="switch-theme"
+          offLabel="Année"
+          onChange={() => {
+            setTheme(theme === "month" ? "year" : "month");
+          }}
+          onLabel="Mois"
+          checked={theme === "month"}
+        />
+        <Link to={"/"}>Calendrier</Link>
+        <Link to={"/reservations"}>Réservations</Link>
+      </Navbar>
+    </div>
   );
 };
 

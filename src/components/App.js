@@ -8,25 +8,28 @@ import React from "react";
 import M from "materialize-css";
 import Menu from "./menu/Menu";
 import "./momentLocaleFr";
+import ThemeContextProvider from "../context/provider/ThemeContextProvider";
 
-function App() {
+const App = () => {
   return (
-    <EasybaseProvider ebconfig={ebconfig}>
-      <Menu />
-      <Container id="mainContainer" style={{ padding: "15px" }}>
-        <Switch>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              children={<route.component />}
-            />
-          ))}
-        </Switch>
-      </Container>
-    </EasybaseProvider>
+    <ThemeContextProvider>
+      <EasybaseProvider ebconfig={ebconfig}>
+        <Menu />
+        <Container id="mainContainer" style={{ padding: "15px" }}>
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                children={<route.component />}
+              />
+            ))}
+          </Switch>
+        </Container>
+      </EasybaseProvider>
+    </ThemeContextProvider>
   );
-}
+};
 
 export default App;

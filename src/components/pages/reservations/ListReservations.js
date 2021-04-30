@@ -1,48 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useEasybase } from "easybase-react";
-import moment from "moment";
-import { Card, Col, Icon, Row, Switch } from "react-materialize";
-import { Link } from "react-router-dom";
-// import ShowDate from "../calendar/ShowDate";
+import { Col, Preloader, Row } from "react-materialize";
+import Reservation from "./Reservation";
 
 const ListReservations = () => {
+  const [isLoading, setIsloading] = useState(false);
   const { Frame, sync, configureFrame } = useEasybase();
 
   useEffect(() => {
-    configureFrame({ tableName: "RESERVATION", limit: 10 });
-    sync();
+    (async () => {
+      setIsloading(true);
+      await configureFrame({ tableName: "RESERVATION", limit: 10 });
+      await sync();
+      setIsloading(false);
+    })();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
+  return isLoading ? (
+    <Row>
+      <Col s={4} className="center-align">
+        <Preloader active color="blue" flashing />
+      </Col>
+    </Row>
+  ) : (
     <Row>
       {Frame().map((resa, index) => (
         <Col m={6} s={12} key={index}>
-          <Card
-            actions={[
-              <Link key="1" to={"/"}>
-                Calendrier
-              </Link>,
-            ]}
-            className="blue-grey darken-1"
-            closeIcon={<Icon>close</Icon>}
-            revealIcon={<Icon>more_vert</Icon>}
-            textClassName="white-text"
-            title={resa.username}
-          >
-            <Switch
-              id={"switch-" + index}
-              offLabel="En attente"
-              onLabel="Vérifié"
-              checked={resa.isconfirmed}
-            />
-            <p>
-              {moment(resa.datebegin).format("DD MMMM YYYY")} ->{" "}
-              {moment(resa.dateend).format("DD MMMM YYYY")}
-            </p>
-            {/*<ShowDate*/}
-            {/*  date={moment(resa.datebegin).format("DD MMMM YYYY")}*/}
-            {/*/>*/}
-          </Card>
+          <Reservation reservation={resa} index={index} />
         </Col>
       ))}
     </Row>

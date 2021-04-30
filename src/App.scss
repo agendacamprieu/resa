@@ -1,6 +1,15 @@
 @import "~materialize-css/sass/materialize";
+@import "style/calendar";
 
+#mainContainer {
 
-.App {
-  text-align: center;
+}
+
+#menu-navbar .switch {
+  margin-right: 40px;
+
+  label {
+    color: white;
+    font-size: 15px;
+  }
 }

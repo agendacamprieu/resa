@@ -1,11 +1,11 @@
 import ListReservations from "./pages/reservations/ListReservations";
-import Calendar from "./pages/calendar/Calendar";
+import Agenda from "./pages/calendar/Agenda";
 
 const routes = [
   {
     path: "/",
     exact: true,
-    component: Calendar,
+    component: Agenda,
   },
   {
     path: "/reservations",
