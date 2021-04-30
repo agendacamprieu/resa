@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useEasybase } from "easybase-react";
-import { Col, Preloader, Row } from "react-materialize";
+import { Col, Row } from "react-materialize";
 import Reservation from "./Reservation";
+import DataLoader from "../utils/DataLoader";
 
 const ListReservations = () => {
   const [isLoading, setIsloading] = useState(false);
@@ -17,11 +18,7 @@ const ListReservations = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return isLoading ? (
-    <Row>
-      <Col s={4} className="center-align">
-        <Preloader active color="blue" flashing />
-      </Col>
-    </Row>
+    <DataLoader />
   ) : (
     <Row>
       {Frame().map((resa, index) => (

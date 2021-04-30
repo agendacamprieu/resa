@@ -8,7 +8,7 @@ const Reservation = ({ reservation, index }) => {
     <Card
       actions={[
         <Link key="1" to={"/"}>
-          Calendrier
+          Voir
         </Link>,
       ]}
       className="blue-grey darken-1"

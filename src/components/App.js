@@ -7,10 +7,12 @@ import { Route, Switch } from "react-router-dom";
 import React from "react";
 import M from "materialize-css";
 import Menu from "./menu/Menu";
-import "./momentLocaleFr";
+import "./pages/utils/momentLocaleFr";
 import ThemeContextProvider from "../context/provider/ThemeContextProvider";
 
 const App = () => {
+  console.log(M);
+
   return (
     <ThemeContextProvider>
       <EasybaseProvider ebconfig={ebconfig}>
