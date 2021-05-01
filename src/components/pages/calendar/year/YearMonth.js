@@ -1,20 +1,31 @@
 import React, { useContext } from "react";
 import { Col } from "react-materialize";
 import ThemeContext from "../../../../context/ThemeContext";
+import range from "../../utils/range";
+import YearMonthDay from "./YearMonthDay";
+import moment from "moment";
 
 const YearMonth = ({ month }) => {
   const { currentDate } = useContext(ThemeContext);
-  const currentMonth = currentDate.format("MMMM");
+  const days = range(currentDate.daysInMonth(), 1);
+
   return (
-    <Col className="month" s={3}>
+    <Col className="month" s={12} l={3}>
       <h4
         className={
-          currentMonth === month ? "capitalize teal-text" : "capitalize"
+          moment().format("MMMM") === month &&
+          currentDate.year() === moment().year()
+            ? "capitalize teal-text"
+            : "capitalize"
         }
       >
         {month}
       </h4>
-      <div className="month-days"></div>
+      <div className="month-days">
+        {days.map((day, index) => (
+          <YearMonthDay month={month} day={day} key={index} />
+        ))}
+      </div>
     </Col>
   );
 };

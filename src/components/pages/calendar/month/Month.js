@@ -3,6 +3,7 @@ import MonthDay from "./MonthDay";
 import range from "../../utils/range";
 import { Row } from "react-materialize";
 import ThemeContext from "../../../../context/ThemeContext";
+import moment from "moment";
 
 const Month = () => {
   const { currentDate } = useContext(ThemeContext);
@@ -14,7 +15,10 @@ const Month = () => {
   return (
     <div>
       <h4 className="capitalize">
-        {month} {year}
+        <span className={month === moment().format("MMMM") ? "teal-text" : ""}>
+          <strong>{month}</strong>
+        </span>{" "}
+        {year}
       </h4>
       <Row>
         {days.map((day, index) => (

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ThemeContext from "../../../context/ThemeContext";
 import Year from "./year/Year";
 import Month from "./month/Month";
-import { Button, Row } from "react-materialize";
+import { Button, Icon, Row } from "react-materialize";
 import moment from "moment";
 
 const Calendar = ({ events }) => {
@@ -12,16 +12,28 @@ const Calendar = ({ events }) => {
 
   return (
     <>
-      <Row>
-        <Button onClick={() => setCurrentDate(moment())}>Aujourd'hui</Button>
-        <div className="right">
-          <Button onClick={() => setCurrentDate(newDate.subtract(1, period))}>
-            {"<"}
-          </Button>
-          <Button onClick={() => setCurrentDate(newDate.add(1, period))}>
-            {">"}
-          </Button>
-        </div>
+      <Row className="center-align">
+        <Button
+          className="teal darken-1"
+          onClick={() => setCurrentDate(moment())}
+        >
+          Aujourd'hui
+        </Button>
+        {/*<div className="right">*/}
+        <Button
+          className="teal darken-1"
+          style={{ marginLeft: "25px", marginRight: "5px" }}
+          onClick={() => setCurrentDate(newDate.subtract(1, period))}
+        >
+          <Icon>chevron_left</Icon>
+        </Button>
+        <Button
+          className="teal darken-1"
+          onClick={() => setCurrentDate(newDate.add(1, period))}
+        >
+          <Icon>chevron_right</Icon>
+        </Button>
+        {/*</div>*/}
       </Row>
       <div className={period !== "year" ? "hide" : ""}>
         <Year />

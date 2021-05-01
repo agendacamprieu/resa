@@ -9,7 +9,9 @@ const Year = () => {
 
   return (
     <div>
-      <h4>{currentDate.year()}</h4>
+      <h4>
+        <strong>{currentDate.year()}</strong>
+      </h4>
       <Row>
         {moment.months().map((month, index) => (
           <YearMonth month={month} key={index} />

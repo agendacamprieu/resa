@@ -1,5 +1,6 @@
 @import "~materialize-css/sass/materialize";
 @import "style/calendar";
+@import "style/reservation";
 
 #mainContainer {
 
@@ -17,6 +18,16 @@
       color: white;
       font-size: 15px;
     }
+  }
+}
+
+#mobile-nav {
+  .switch label {
+    color: rgba(0, 0, 0, 0.87);
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 32px;
   }
 }
 

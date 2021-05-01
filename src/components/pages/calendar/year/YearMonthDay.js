@@ -1,18 +1,30 @@
 import React, { useContext } from "react";
 import { Col } from "react-materialize";
-import moment from "moment";
 import ThemeContext from "../../../../context/ThemeContext";
+import moment from "moment";
 
-const MonthDay = ({ day }) => {
+const YearMonthDay = ({ month, day }) => {
   const { currentDate } = useContext(ThemeContext);
 
   const isToday = () => {
     return (
       moment(
-        currentDate.year() + "-" + currentDate.format("MM") + "-" + day
+        currentDate.year() +
+          "-" +
+          moment().month(month).format("MM") +
+          "-" +
+          day
       ).format("YYYY-MM-DD") === moment().format("YYYY-MM-DD")
     );
   };
+
+  // const isToday = () => {
+  //   return moment({
+  //     year: currentDate.year(),
+  //     month: parseInt(moment().month(month).format("MM")),
+  //     day: day,
+  //   }).isSame(moment());
+  // };
 
   const getClassNameToday = () => {
     if (isToday()) {
@@ -25,6 +37,7 @@ const MonthDay = ({ day }) => {
       return "";
     }
   };
+
   return (
     <Col className="month" s={2}>
       <div className={getClassNameToday()}>{day}</div>
@@ -32,4 +45,4 @@ const MonthDay = ({ day }) => {
   );
 };
 
-export default MonthDay;
+export default YearMonthDay;

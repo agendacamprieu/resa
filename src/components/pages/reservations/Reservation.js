@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Icon, Switch } from "react-materialize";
+import { Badge, Card, Icon } from "react-materialize";
 import moment from "moment";
 
 const Reservation = ({ reservation, index }) => {
@@ -11,18 +11,29 @@ const Reservation = ({ reservation, index }) => {
           Voir
         </Link>,
       ]}
-      className="blue-grey darken-1"
+      className="blue-grey darken-1 reservation-card"
       closeIcon={<Icon>close</Icon>}
       revealIcon={<Icon>more_vert</Icon>}
       textClassName="white-text"
       title={reservation.username}
     >
-      <Switch
-        id={"switch-" + index}
-        offLabel="En attente"
-        onLabel="Vérifié"
-        checked={reservation.isconfirmed}
-      />
+      <Badge
+        className={
+          reservation.isconfirmed ? "green white-text" : "lime white-text"
+        }
+      >
+        {reservation.isconfirmed ? (
+          <>
+            <Icon>check</Icon>
+            <span className="status">Vérifié</span>
+          </>
+        ) : (
+          <>
+            <Icon>access_time</Icon>
+            <span className="status">En attente</span>
+          </>
+        )}
+      </Badge>
       <p>
         {moment(reservation.datebegin).format("DD MMMM YYYY")} ->{" "}
         {moment(reservation.dateend).format("DD MMMM YYYY")}
