@@ -7,11 +7,11 @@ const MonthDay = ({ day }) => {
   const { currentDate } = useContext(ThemeContext);
 
   const isToday = () => {
-    return (
-      moment(
-        currentDate.year() + "-" + currentDate.format("MM") + "-" + day
-      ).format("YYYY-MM-DD") === moment().format("YYYY-MM-DD")
-    );
+    return moment({
+      year: currentDate.year(),
+      month: parseInt(currentDate.format("MM")) - 1,
+      day: day,
+    }).isSame(moment(), "day");
   };
 
   const getClassNameToday = () => {
@@ -25,8 +25,9 @@ const MonthDay = ({ day }) => {
       return "";
     }
   };
+
   return (
-    <Col className="month" s={2}>
+    <Col className="month-days" s={2}>
       <div className={getClassNameToday()}>{day}</div>
     </Col>
   );

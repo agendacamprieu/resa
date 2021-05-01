@@ -4,13 +4,19 @@ import ThemeContext from "../../../../context/ThemeContext";
 import range from "../../utils/range";
 import YearMonthDay from "./YearMonthDay";
 import moment from "moment";
+import YearSmallDays from "./YearSmallDays";
 
 const YearMonth = ({ month }) => {
   const { currentDate } = useContext(ThemeContext);
-  const days = range(currentDate.daysInMonth(), 1);
+  const days = range(
+    moment({ ...currentDate })
+      .month(month)
+      .daysInMonth(),
+    1
+  );
 
   return (
-    <Col className="month" s={12} l={3}>
+    <Col className="month" s={12} m={3}>
       <h4
         className={
           moment().format("MMMM") === month &&
@@ -21,6 +27,7 @@ const YearMonth = ({ month }) => {
       >
         {month}
       </h4>
+      <YearSmallDays />
       <div className="month-days">
         {days.map((day, index) => (
           <YearMonthDay month={month} day={day} key={index} />

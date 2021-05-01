@@ -8,8 +8,8 @@ const Year = () => {
   const { currentDate } = useContext(ThemeContext);
 
   return (
-    <div>
-      <h4>
+    <div className="year-calendar">
+      <h4 className="teal-text">
         <strong>{currentDate.year()}</strong>
       </h4>
       <Row>
