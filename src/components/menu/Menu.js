@@ -13,7 +13,9 @@ const Menu = () => {
         alignLinks="right"
         brand={
           <div className="brand-logo">
-            <Icon>house</Icon>
+            <Icon medium className="teal-text text-darken-4">
+              house
+            </Icon>
             <span>Réservations pour Camprieu</span>
             {/*<img src={logo} alt="logo"></img>*/}
           </div>

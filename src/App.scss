@@ -5,12 +5,18 @@
 
 }
 
-#menu-navbar .switch {
-  margin-right: 40px;
+#menu-navbar {
+  .brand-logo i {
+    font-size: 43px;
+  }
 
-  label {
-    color: white;
-    font-size: 15px;
+  .switch {
+    margin-right: 40px;
+
+    label {
+      color: white;
+      font-size: 15px;
+    }
   }
 }
 
@@ -21,4 +27,16 @@
   min-height: 80vh; /* use "vh" instead of % */
   padding-top: 35vh;
   margin: auto;
+}
+
+.capitalize:first-letter {
+  text-transform: capitalize;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
 }

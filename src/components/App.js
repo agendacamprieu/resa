@@ -11,11 +11,10 @@ import "./pages/utils/momentLocaleFr";
 import ThemeContextProvider from "../context/provider/ThemeContextProvider";
 
 const App = () => {
-  console.log(M);
-
   return (
     <ThemeContextProvider>
       <EasybaseProvider ebconfig={ebconfig}>
+        <div className="hide">{M.version}</div>
         <Menu />
         <Container id="mainContainer" style={{ padding: "15px" }}>
           <Switch>
