@@ -33,7 +33,7 @@ const Menu = () => {
           onLabel="Mois"
           checked={period === "month"}
         />
-        <Link to={"/"}>Calendrier</Link>
+        <Link to={"/resa"}>Calendrier</Link>
         <Link to={"/reservations"}>Réservations</Link>
       </Navbar>
     </div>

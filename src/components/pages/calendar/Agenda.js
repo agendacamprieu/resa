@@ -4,7 +4,7 @@ import Calendar from "./Calendar";
 import DataLoader from "../utils/DataLoader";
 
 const Agenda = () => {
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsloading] = useState(true);
   const [events, setEvents] = useState([]);
 
   const { Query } = useEasybase();

@@ -5,7 +5,7 @@ import Reservation from "./Reservation";
 import DataLoader from "../utils/DataLoader";
 
 const ListReservations = () => {
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsloading] = useState(true);
   const { Frame, sync, configureFrame } = useEasybase();
 
   useEffect(() => {
