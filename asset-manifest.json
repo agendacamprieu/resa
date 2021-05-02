@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/resa/static/css/main.ff8db4d6.chunk.css",
+    "main.js": "/resa/static/js/main.caba44c2.chunk.js",
+    "main.js.map": "/resa/static/js/main.caba44c2.chunk.js.map",
+    "runtime-main.js": "/resa/static/js/runtime-main.e5d2eb5e.js",
+    "runtime-main.js.map": "/resa/static/js/runtime-main.e5d2eb5e.js.map",
+    "static/js/2.73033320.chunk.js": "/resa/static/js/2.73033320.chunk.js",
+    "static/js/2.73033320.chunk.js.map": "/resa/static/js/2.73033320.chunk.js.map",
+    "static/js/3.a6d18ae3.chunk.js": "/resa/static/js/3.a6d18ae3.chunk.js",
+    "static/js/3.a6d18ae3.chunk.js.map": "/resa/static/js/3.a6d18ae3.chunk.js.map",
+    "static/js/4.a699e50d.chunk.js": "/resa/static/js/4.a699e50d.chunk.js",
+    "static/js/4.a699e50d.chunk.js.map": "/resa/static/js/4.a699e50d.chunk.js.map",
+    "index.html": "/resa/index.html",
+    "static/css/main.ff8db4d6.chunk.css.map": "/resa/static/css/main.ff8db4d6.chunk.css.map",
+    "static/js/2.73033320.chunk.js.LICENSE.txt": "/resa/static/js/2.73033320.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e5d2eb5e.js",
+    "static/js/2.73033320.chunk.js",
+    "static/css/main.ff8db4d6.chunk.css",
+    "static/js/main.caba44c2.chunk.js"
+  ]
+}
