@@ -8,6 +8,11 @@ const routes = [
     component: Agenda,
   },
   {
+    path: "/resa",
+    exact: true,
+    component: Agenda,
+  },
+  {
     path: "/reservations",
     exact: true,
     component: ListReservations,
