@@ -10,45 +10,70 @@ const Month = () => {
 
   const month = currentDate.format("MMMM");
   const year = currentDate.year();
+  const weekdays = moment.weekdays(true);
+  const weekdaysShort = moment.weekdaysShort(true);
 
-  let days = [];
-  const indexes = [7, 14, 21, 28, 35];
-  const daysOfMonth = range(currentDate.daysInMonth(), 1);
-  indexes.forEach((index, key) => {
-    days[key] = daysOfMonth.slice(index - 7, index);
-  });
+  const getFirstDayOfMonth = () => {
+    return moment({ ...currentDate })
+      .month(month)
+      .weekday() === 0
+      ? 7
+      : moment({ ...currentDate })
+          .month(month)
+          .weekday();
+  };
 
-  const headerDays = [
-    "Lundi",
-    "Mardi",
-    "Mercredi",
-    "Jeudi",
-    "Vendredi",
-    "Samedi",
-    "Dimanche",
-  ];
+  const getDaysOfMonth = () => {
+    let days = [];
+    const indexes = [7, 14, 21, 28, 35, 42];
+    const daysOfMonth = range(currentDate.daysInMonth(), 1);
+    const countPreviousMonth = moment({ ...currentDate })
+      .month(month)
+      .subtract(1, "month")
+      .daysInMonth();
+    const firstDayOfMonth = getFirstDayOfMonth();
+    const daysOfPreviousMonth = range(
+      firstDayOfMonth - 1,
+      countPreviousMonth + 2 - firstDayOfMonth
+    );
+    const daysOfPreviousMonthFinal = daysOfPreviousMonth.map((day) => ({
+      isInMonth: false,
+      number: day,
+    }));
+    const daysOfMonthBefore = daysOfMonth.map((day) => ({
+      isInMonth: true,
+      number: day,
+    }));
+    const daysOfMonthFinal = daysOfPreviousMonthFinal.concat(daysOfMonthBefore);
 
-  const headerDaysSmall = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
+    indexes.forEach((index, key) => {
+      days[key] = daysOfMonthFinal.slice(index - 7, index);
+    });
+
+    return days;
+  };
 
   const isToday = (day) => {
     return moment({
       year: currentDate.year(),
       month: parseInt(currentDate.format("MM")) - 1,
-      day: day,
+      day: day.number,
     }).isSame(moment(), "day");
   };
 
   const getClassNameToday = (day) => {
+    let className = "";
+    className += day.isInMonth ? "in-month" : "out-of-month";
     if (isToday(day)) {
-      if (day >= 10) {
-        return "day-today double-number";
-      } else {
-        return "day-today";
+      className += " day-today";
+      if (day.number >= 10) {
+        className += " double-number";
       }
-    } else {
-      return "";
     }
+    return className;
   };
+
+  const days = getDaysOfMonth();
 
   return (
     <div className="month-calendar">
@@ -68,8 +93,8 @@ const Month = () => {
       <Table className="centered hide-on-small-only">
         <thead>
           <tr>
-            {headerDays.map((day, index) => (
-              <th data-field="day" key={index}>
+            {weekdays.map((day, index) => (
+              <th data-field="day" key={index} className="capitalize">
                 {day}
               </th>
             ))}
@@ -80,7 +105,7 @@ const Month = () => {
             <tr key={key}>
               {week.map((day, index) => (
                 <td className={getClassNameToday(day)} key={index}>
-                  {day}
+                  {day.number}
                 </td>
               ))}
             </tr>
@@ -90,8 +115,8 @@ const Month = () => {
       <Table className="centered hide-on-med-and-up">
         <thead>
           <tr>
-            {headerDaysSmall.map((day, index) => (
-              <th data-field="day" key={index}>
+            {weekdaysShort.map((day, index) => (
+              <th data-field="day" key={index} className="capitalize">
                 {day}
               </th>
             ))}
@@ -102,7 +127,7 @@ const Month = () => {
             <tr key={key}>
               {week.map((day, index) => (
                 <td className={getClassNameToday(day)} key={index}>
-                  {day}
+                  {day.number}
                 </td>
               ))}
             </tr>

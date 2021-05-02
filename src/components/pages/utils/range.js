@@ -1,5 +1,5 @@
 const range = (size, startAt = 0) => {
-  return [...Array(size).keys()].map((i) => i + startAt);
+  return size > 0 ? [...Array(size).keys()].map((i) => i + startAt) : [];
 };
 
 export default range;

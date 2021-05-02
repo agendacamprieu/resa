@@ -10,8 +10,18 @@
   }
 }
 
-.month-calendar .day-today {
-  background-color: #ffc107 !important;
+.month-calendar {
+  .in-month {
+    font-weight: bold;
+  }
+
+  .out-of-month {
+    color: grey;
+  }
+
+  .day-today {
+    background-color: #ffc107 !important;
+  }
 }
 
 .year-calendar {
@@ -28,8 +38,10 @@
       background-color: #009688 !important;
     }
   }
+
   .header-small-days {
     display: block;
+
     .year-day {
       width: 13.33333%;
       float: left;

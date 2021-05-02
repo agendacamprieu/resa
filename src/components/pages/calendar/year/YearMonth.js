@@ -27,7 +27,7 @@ const YearMonth = ({ month }) => {
       >
         {month}
       </h4>
-      <YearSmallDays />
+      <YearSmallDays month={month} />
       <div className="month-days">
         {days.map((day, index) => (
           <YearMonthDay month={month} day={day} key={index} />
