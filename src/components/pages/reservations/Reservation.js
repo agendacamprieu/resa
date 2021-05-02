@@ -7,7 +7,7 @@ const Reservation = ({ reservation, index }) => {
   return (
     <Card
       actions={[
-        <Link key="1" to={"/resa"}>
+        <Link key="1" to={"/"}>
           Voir
         </Link>,
       ]}
