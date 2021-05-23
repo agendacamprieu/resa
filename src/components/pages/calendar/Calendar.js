@@ -5,7 +5,7 @@ import Month from "./month/Month";
 import Controls from "./Controls";
 import AddButton from "../../AddButton";
 
-const Calendar = ({ events }) => {
+const Calendar = () => {
   const { period } = useContext(ThemeContext);
 
   return (
@@ -17,9 +17,7 @@ const Calendar = ({ events }) => {
       <div className={period !== "month" ? "hide" : ""}>
         <Month />
       </div>
-      {/*<div style={{ marginTop: "30px" }}>*/}
       <Controls />
-      {/*</div>*/}
       <AddButton />
     </>
   );

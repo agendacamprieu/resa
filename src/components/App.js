@@ -9,25 +9,28 @@ import M from "materialize-css";
 import Menu from "./menu/Menu";
 import "./pages/utils/momentLocaleFr";
 import ThemeContextProvider from "../context/provider/ThemeContextProvider";
+import DateContextProvider from "../context/provider/DateContextProvider";
 
 const App = () => {
   return (
     <ThemeContextProvider>
       <EasybaseProvider ebconfig={ebconfig}>
-        <div className="hide">{M.version}</div>
-        <Menu />
-        <Container id="mainContainer" style={{ padding: "15px" }}>
-          <Switch>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                children={<route.component />}
-              />
-            ))}
-          </Switch>
-        </Container>
+        <DateContextProvider>
+          <div className="hide">{M.version}</div>
+          <Menu />
+          <Container id="mainContainer" style={{ padding: "15px" }}>
+            <Switch>
+              {routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  children={<route.component />}
+                />
+              ))}
+            </Switch>
+          </Container>
+        </DateContextProvider>
       </EasybaseProvider>
     </ThemeContextProvider>
   );

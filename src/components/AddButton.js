@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Icon, Modal, TextInput } from "react-materialize";
 import DatePickerFr from "./pages/utils/DatePickerFr";
 import moment from "moment";
 import DataLoader from "./pages/utils/DataLoader";
 import { useEasybase } from "easybase-react";
 import M from "materialize-css";
+import DateContext from "../context/DateContext";
 
 const AddButton = () => {
   const [isLoading, setIsloading] = useState(false);
-  const [beginDate, setBeginDate] = useState({});
-  const [endDate, setEndDate] = useState({});
+  const { beginDate, setBeginDate, endDate, setEndDate } = useContext(
+    DateContext
+  );
   const { Frame, sync } = useEasybase();
-
   const nameRef = React.createRef();
 
   const addResa = async () => {

@@ -1,44 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useEasybase } from "easybase-react";
+import React, { useContext } from "react";
 import Calendar from "./Calendar";
 import DataLoader from "../utils/DataLoader";
+import DateContext from "../../../context/DateContext";
 
 const Agenda = () => {
-  const [isLoading, setIsloading] = useState(true);
-  const [events, setEvents] = useState([]);
+  const { isLoadingEvents } = useContext(DateContext);
 
-  const { Query } = useEasybase();
-
-  useEffect(() => {
-    (async () => {
-      setIsloading(true);
-      const res = await Query({
-        queryName: "confirmed",
-        tableName: "RESERVATION",
-      });
-      // let eventsArray = [];
-      // res &&
-      //   res.length &&
-      //   res.forEach(
-      //     (resa) =>
-      //       eventsArray.push({
-      //         id: resa._id,
-      //         color: "#1ccb9e",
-      //         from: moment(resa.datebegin).format("YYYY-MM-DD"),
-      //         to: moment(resa.dateend).format("YYYY-MM-DD"),
-      //         title: resa.username,
-      //       })
-      //   );
-      setEvents(res);
-      setIsloading(false);
-    })();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  return isLoading ? (
-    <DataLoader />
-  ) : events ? (
-    <Calendar events={events} />
-  ) : null;
+  return isLoadingEvents ? <DataLoader /> : <Calendar />;
 };
 
 export default Agenda;
