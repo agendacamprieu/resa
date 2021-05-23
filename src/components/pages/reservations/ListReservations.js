@@ -3,6 +3,7 @@ import { useEasybase } from "easybase-react";
 import { Col, Row } from "react-materialize";
 import Reservation from "./Reservation";
 import DataLoader from "../utils/DataLoader";
+import AddButton from "../../AddButton";
 
 const ListReservations = () => {
   const [isLoading, setIsloading] = useState(true);
@@ -20,13 +21,16 @@ const ListReservations = () => {
   return isLoading ? (
     <DataLoader />
   ) : (
-    <Row>
-      {Frame().map((resa, index) => (
-        <Col m={6} s={12} key={index}>
-          <Reservation reservation={resa} index={index} />
-        </Col>
-      ))}
-    </Row>
+    <>
+      <Row>
+        {Frame().map((resa, index) => (
+          <Col m={6} s={12} key={index}>
+            <Reservation reservation={resa} index={index} />
+          </Col>
+        ))}
+      </Row>
+      <AddButton />
+    </>
   );
 };
 

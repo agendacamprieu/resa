@@ -1,19 +1,18 @@
 import React from "react";
 import { DatePicker } from "react-materialize";
 
-const ShowDate = ({ date }) => {
+const DatePickerFr = ({ title, onSelect }) => {
   return (
     <DatePicker
-      value={date}
       options={{
-        autoClose: false,
-        container: null,
+        autoClose: true,
+        container: "body",
         defaultDate: null,
         disableDayFn: null,
         disableWeekends: false,
         events: [],
         firstDay: 0,
-        format: "DD MMMM YYYY",
+        format: "dddd d mmmm, yyyy",
         i18n: {
           cancel: "Annuler",
           clear: "Effacer",
@@ -40,7 +39,7 @@ const ShowDate = ({ date }) => {
             "Mai",
             "Jun",
             "Jul",
-            "Aot",
+            "Aut",
             "Sep",
             "Oct",
             "Nov",
@@ -66,7 +65,7 @@ const ShowDate = ({ date }) => {
         onClose: null,
         onDraw: null,
         onOpen: null,
-        onSelect: null,
+        onSelect: onSelect,
         parse: null,
         setDefaultDate: false,
         showClearBtn: false,
@@ -74,8 +73,10 @@ const ShowDate = ({ date }) => {
         showMonthAfterYear: false,
         yearRange: 10,
       }}
-    />
+    >
+      {title}
+    </DatePicker>
   );
 };
 
-export default ShowDate;
+export default DatePickerFr;

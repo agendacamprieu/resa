@@ -3,6 +3,7 @@ import ThemeContext from "../../../context/ThemeContext";
 import Year from "./year/Year";
 import Month from "./month/Month";
 import Controls from "./Controls";
+import AddButton from "../../AddButton";
 
 const Calendar = ({ events }) => {
   const { period } = useContext(ThemeContext);
@@ -19,6 +20,7 @@ const Calendar = ({ events }) => {
       {/*<div style={{ marginTop: "30px" }}>*/}
       <Controls />
       {/*</div>*/}
+      <AddButton />
     </>
   );
 };
