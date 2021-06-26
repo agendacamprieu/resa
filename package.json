@@ -1,5 +1,6 @@
 {
   "name": "resa",
+  "homepage": "https://agendacamprieu.github.io/resa/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
