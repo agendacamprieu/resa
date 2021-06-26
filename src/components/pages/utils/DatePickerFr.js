@@ -4,6 +4,7 @@ import { DatePicker } from "react-materialize";
 const DatePickerFr = ({ title, onSelect }) => {
   return (
     <DatePicker
+      id={title}
       options={{
         autoClose: true,
         container: "body",

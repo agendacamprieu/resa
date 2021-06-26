@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import ThemeContext from "../../../../context/ThemeContext";
 import moment from "moment";
 import DateContext from "../../../../context/DateContext";
+import { Button } from "react-materialize";
 
 const YearMonthDay = ({ month, day }) => {
   const { currentDate } = useContext(ThemeContext);
@@ -29,6 +30,8 @@ const YearMonthDay = ({ month, day }) => {
     return result;
   };
 
+  const resa = isReserved();
+
   const getClassNameToday = () => {
     if (isToday()) {
       if (day >= 10) {
@@ -36,7 +39,7 @@ const YearMonthDay = ({ month, day }) => {
       } else {
         return "day-today";
       }
-    } else if (isReserved() !== undefined) {
+    } else if (resa) {
       if (day >= 10) {
         return "day-reserved double-number";
       } else {
@@ -49,7 +52,13 @@ const YearMonthDay = ({ month, day }) => {
 
   return (
     <div className="day">
-      <div className={getClassNameToday()}>{day}</div>
+      {resa ? (
+        <Button className={getClassNameToday()} tooltip={resa.username}>
+          {day}
+        </Button>
+      ) : (
+        <div className={getClassNameToday()}>{day}</div>
+      )}
     </div>
   );
 };
