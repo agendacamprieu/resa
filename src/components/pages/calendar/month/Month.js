@@ -4,14 +4,31 @@ import range from "../../utils/range";
 import { Table } from "react-materialize";
 import ThemeContext from "../../../../context/ThemeContext";
 import moment from "moment";
+import DateContext from "../../../../context/DateContext";
+import { Button } from "react-materialize";
 
 const Month = () => {
   const { currentDate } = useContext(ThemeContext);
+  const { events } = useContext(DateContext);
 
   const month = currentDate.format("MMMM");
   const year = currentDate.year();
   const weekdays = moment.weekdays(true);
   const weekdaysShort = moment.weekdaysShort(true);
+
+  const isReserved = (day) => {
+    const result = events.find((resa) =>
+      moment({
+        year: currentDate.year(),
+        month: parseInt(currentDate.format("MM")) - 1,
+        day: day,
+      }).isBetween(
+        moment(resa.datebegin).subtract("1", "day"),
+        moment(resa.dateend)
+      )
+    );
+    return result;
+  };
 
   const getFirstDayOfMonth = () => {
     return moment({ ...currentDate })
@@ -69,6 +86,12 @@ const Month = () => {
       if (day.number >= 10) {
         className += " double-number";
       }
+    } else if (isReserved(day.number)) {
+      if (day.number >= 10) {
+        className += " day-reserved double-number";
+      } else {
+        className += " day-reserved";
+      }
     }
     return className;
   };
@@ -103,11 +126,23 @@ const Month = () => {
         <tbody>
           {days.map((week, key) => (
             <tr key={key}>
-              {week.map((day, index) => (
-                <td className={getClassNameToday(day)} key={index}>
-                  {day.number}
-                </td>
-              ))}
+              {week.map((day, index) =>
+                isReserved(day.number) ? (
+                  <td key={index}>
+                    <Button
+                      className={getClassNameToday(day)}
+                      tooltip={isReserved(day.number).username}
+                      key={index}
+                    >
+                      {day.number}
+                    </Button>
+                  </td>
+                ) : (
+                  <td className={getClassNameToday(day)} key={index}>
+                    {day.number}
+                  </td>
+                )
+              )}
             </tr>
           ))}
         </tbody>
@@ -125,11 +160,23 @@ const Month = () => {
         <tbody>
           {days.map((week, key) => (
             <tr key={key}>
-              {week.map((day, index) => (
-                <td className={getClassNameToday(day)} key={index}>
-                  {day.number}
-                </td>
-              ))}
+              {week.map((day, index) =>
+                isReserved(day.number) ? (
+                  <td key={index}>
+                    <Button
+                      className={getClassNameToday(day)}
+                      tooltip={isReserved(day.number).username}
+                      key={index}
+                    >
+                      {day.number}
+                    </Button>
+                  </td>
+                ) : (
+                  <td className={getClassNameToday(day)} key={index}>
+                    {day.number}
+                  </td>
+                )
+              )}
             </tr>
           ))}
         </tbody>
