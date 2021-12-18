@@ -4,6 +4,8 @@
   width: 23px;
   margin-left: -7px;
   padding-left: 7px;
+  height: inherit;
+  line-height: inherit;
 
   &.double-number {
     padding-left: 3px;
@@ -38,7 +40,7 @@
   }
 
   .day-reserved {
-    background-color: #18ff07 !important;
+    //background-color: #18ff07 !important;
   }
 }
 
@@ -50,6 +52,7 @@
     .day {
       width: 13.33333%;
       float: left;
+      height: 24px;
     }
 
     .day-today {
@@ -57,7 +60,7 @@
     }
 
     .day-reserved {
-      background-color: #18ff07 !important;
+      //background-color: #18ff07 !important;
     }
   }
 

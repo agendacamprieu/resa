@@ -6,6 +6,7 @@ import ThemeContext from "../../../../context/ThemeContext";
 import moment from "moment";
 import DateContext from "../../../../context/DateContext";
 import { Button } from "react-materialize";
+import stringToColour from "../../utils/stringToColor";
 
 const Month = () => {
   const { currentDate } = useContext(ThemeContext);
@@ -132,8 +133,19 @@ const Month = () => {
                     <Button
                       className={getClassNameToday(day)}
                       tooltip={isReserved(day.number).username}
+                      style={{
+                        backgroundColor: stringToColour(
+                          isReserved(day.number).username
+                        ),
+                      }}
                       key={index}
                     >
+                      {day.number}
+                    </Button>
+                  </td>
+                ) : isToday(day) ? (
+                  <td key={index}>
+                    <Button className={getClassNameToday(day)}>
                       {day.number}
                     </Button>
                   </td>

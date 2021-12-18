@@ -14,4 +14,15 @@
       vertical-align: super;
     }
   }
+
+  .card-action {
+    min-height: 70px;
+
+    .delete-btn {
+      border-radius: 50%;
+      width: 40px;
+      margin: 0;
+      padding: 0;
+    }
+  }
 }

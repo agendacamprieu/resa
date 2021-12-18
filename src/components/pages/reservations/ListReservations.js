@@ -25,7 +25,7 @@ const ListReservations = () => {
       <Row>
         {Frame().map((resa, index) => (
           <Col m={6} s={12} key={index}>
-            <Reservation reservation={resa} index={index} />
+            <Reservation reservation={resa} />
           </Col>
         ))}
       </Row>

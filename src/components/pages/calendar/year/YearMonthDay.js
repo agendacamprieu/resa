@@ -3,6 +3,7 @@ import ThemeContext from "../../../../context/ThemeContext";
 import moment from "moment";
 import DateContext from "../../../../context/DateContext";
 import { Button } from "react-materialize";
+import stringToColour from "../../utils/stringToColor";
 
 const YearMonthDay = ({ month, day }) => {
   const { currentDate } = useContext(ThemeContext);
@@ -53,7 +54,11 @@ const YearMonthDay = ({ month, day }) => {
   return (
     <div className="day">
       {resa ? (
-        <Button className={getClassNameToday()} tooltip={resa.username}>
+        <Button
+          className={getClassNameToday()}
+          tooltip={resa.username}
+          style={{ backgroundColor: stringToColour(resa.username) }}
+        >
           {day}
         </Button>
       ) : (

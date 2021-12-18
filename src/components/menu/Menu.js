@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Icon, Navbar, Switch } from "react-materialize";
 import { Link } from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext";
+import Controls from "../pages/calendar/Controls";
 // import logo from "./../../img/logo3.png";
 
 const Menu = () => {
@@ -13,17 +14,16 @@ const Menu = () => {
         alignLinks="right"
         brand={
           <div className="brand-logo">
-            <Icon medium className="teal-text text-darken-3">
-              house
-            </Icon>
-            <span>Camprieu</span>
-            {/*<img src={logo} alt="logo"></img>*/}
+            <Controls />
           </div>
+          // <Controls />
         }
         id="mobile-nav"
         menuIcon={<Icon>menu</Icon>}
         style={{ backgroundColor: "#26a69a" }}
+        fixed
       >
+        {/*<Controls />*/}
         <Switch
           id="switch-theme"
           offLabel="Année"
