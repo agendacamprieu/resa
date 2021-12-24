@@ -16,7 +16,8 @@ const Controls = () => {
         className="teal darken-1"
         onClick={() => setCurrentDate(moment())}
       >
-        Aujourd'hui
+        <Icon className="today-icon">insert_invitation</Icon>
+        <span className="today-text">Aujourd'hui</span>
       </Button>
       <Button
         className="teal darken-1"

@@ -58,7 +58,7 @@ const Reservation = ({ reservation }) => {
         >
           {reservation.isconfirmed ? (
             <>
-              <Icon>check</Icon>
+              <Icon>event_available</Icon>
               <span className="status">Vérifié</span>
             </>
           ) : (
@@ -123,7 +123,8 @@ const Reservation = ({ reservation }) => {
             node="button"
             waves="green"
             onClick={async () => {
-              console.log("valider");
+              reservation.isconfirmed = true;
+              await sync();
               setValidModalOpen(false);
             }}
           >

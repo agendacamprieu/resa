@@ -12,7 +12,7 @@ const ListReservations = () => {
   useEffect(() => {
     (async () => {
       setIsloading(true);
-      await configureFrame({ tableName: "RESERVATION", limit: 10 });
+      await configureFrame({ tableName: "RESERVATION", limit: null });
       await sync();
       setIsloading(false);
     })();

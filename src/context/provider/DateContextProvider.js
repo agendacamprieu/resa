@@ -6,6 +6,7 @@ const DateContextProvider = ({ children }) => {
   const [beginDate, setBeginDate] = useState({});
   const [endDate, setEndDate] = useState({});
   const [isLoadingEvents, setIsLoadingEvents] = useState(true);
+  const [sync, setSync] = useState(false);
   const [events, setEvents] = useState([]);
   const value = {
     beginDate,
@@ -16,7 +17,11 @@ const DateContextProvider = ({ children }) => {
     events,
   };
 
-  const { Query } = useEasybase();
+  const { Query, useFrameEffect } = useEasybase();
+
+  useFrameEffect(() => {
+    setSync(!sync);
+  });
 
   useEffect(() => {
     (async () => {
@@ -28,7 +33,7 @@ const DateContextProvider = ({ children }) => {
       setEvents(res);
       setIsLoadingEvents(false);
     })();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [sync]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return <DateContext.Provider value={value}>{children}</DateContext.Provider>;
 };

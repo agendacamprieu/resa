@@ -21,6 +21,16 @@
     line-height: 40px;
     margin-top: 5px;
     margin-left: 10px;
+
+    i.today-icon {
+      margin-top: -13px;
+      margin-right: 5px !important;
+    }
+
+    i.material-icons {
+      padding: 0;
+      margin-right: 0;
+    }
   }
 
   #switch label[for="switch-theme"] {
@@ -48,6 +58,14 @@
     left: 65px;
     width: 80%;
     transform: none;
+
+    i.today-icon {
+      margin-top: -10px;
+    }
+
+    .today-text {
+      display: none;
+    }
   }
 }
 
