@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Badge, Button, Card, Icon, Modal } from "react-materialize";
+import { Button, Card, Icon, Modal } from "react-materialize";
 import moment from "moment";
 import { useEasybase } from "easybase-react";
+// import ThemeContext from "../../../context/ThemeContext";
 
 const Reservation = ({ reservation }) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [validModalOpen, setValidModalOpen] = useState(false);
+  // const { setCurrentDate } = useContext(ThemeContext);
   const { sync, deleteRecord } = useEasybase();
 
   const validateButton = !reservation.isconfirmed ? (
@@ -22,7 +24,10 @@ const Reservation = ({ reservation }) => {
   const reservationActions = [
     // <Button
     //   key="1"
-    //   onClick={() => console.log("click")}
+    //   onClick={() => {
+    //     console.log("click");
+    //     setCurrentDate(moment());
+    //   }}
     //   className="waves-effect waves-white btn-flat teal lighten-2 white-text"
     // >
     //   <Icon style={{ marginLeft: "-10px", marginRight: "10px" }}>
@@ -45,29 +50,53 @@ const Reservation = ({ reservation }) => {
     <>
       <Card
         actions={reservationActions}
-        className="blue-grey darken-1 reservation-card"
+        className={
+          reservation.isconfirmed
+            ? "blue-grey darken-2 reservation-card"
+            : "blue-grey darken-3 reservation-card"
+        }
         closeIcon={<Icon>close</Icon>}
         revealIcon={<Icon>more_vert</Icon>}
         textClassName="white-text"
-        title={reservation.username}
-      >
-        <Badge
-          className={
-            reservation.isconfirmed ? "green white-text" : "lime white-text"
-          }
-        >
-          {reservation.isconfirmed ? (
+        title={
+          reservation.isconfirmed ? (
             <>
-              <Icon>event_available</Icon>
-              <span className="status">Vérifié</span>
+              <Icon className="text-lighten-1 green-text reservation-icon">
+                event_available
+              </Icon>
+              <span className="name">{reservation.username}</span>
+              <span className="text-lighten-1 green-text status">Vérifié</span>
             </>
           ) : (
             <>
-              <Icon>access_time</Icon>
-              <span className="status">En attente</span>
+              <Icon className="text-lighten-1 lime-text reservation-icon">
+                access_time
+              </Icon>
+              <span className="name">{reservation.username}</span>
+              <span className="text-lighten-1 lime-text status">
+                En attente
+              </span>
             </>
-          )}
-        </Badge>
+          )
+        }
+      >
+        {/*<Badge*/}
+        {/*  className={*/}
+        {/*    reservation.isconfirmed ? "green white-text" : "lime white-text"*/}
+        {/*  }*/}
+        {/*>*/}
+        {/*  {reservation.isconfirmed ? (*/}
+        {/*    <>*/}
+        {/*      <Icon>event_available</Icon>*/}
+        {/*      <span className="status">Vérifié</span>*/}
+        {/*    </>*/}
+        {/*  ) : (*/}
+        {/*    <>*/}
+        {/*      <Icon>access_time</Icon>*/}
+        {/*      <span className="status">En attente</span>*/}
+        {/*    </>*/}
+        {/*  )}*/}
+        {/*</Badge>*/}
         <p>Du {moment(reservation.datebegin).format("DD MMMM YYYY")}</p>
         <p>Au {moment(reservation.dateend).format("DD MMMM YYYY")}</p>
       </Card>

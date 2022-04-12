@@ -1,18 +1,23 @@
 .reservation-card {
   border-radius: 5px;
 
-  .card-action:last-child {
-    border-radius: 0 0 5px 5px !important;
+  .card-title {
+    .reservation-icon {
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+    .name {
+      vertical-align: top;
+    }
+    .status {
+      font-size: 1rem;
+      float: right;
+      font-weight: bold;
+    }
   }
 
-  .badge {
-    height: 25px;
-    border-radius: 5px;
-
-    span.status {
-      margin-left: 6px;
-      vertical-align: super;
-    }
+  .card-action:last-child {
+    border-radius: 0 0 5px 5px !important;
   }
 
   .card-action {

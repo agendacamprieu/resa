@@ -89,6 +89,7 @@ const AddButton = () => {
           large
           node="button"
           waves="light"
+          className="pulse"
         />
       }
       actions={[
